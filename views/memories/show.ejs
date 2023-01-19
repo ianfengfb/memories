@@ -1,0 +1,158 @@
+<% layout('layouts/boilerplateShow') %>
+    <div class="row">
+        <div class="col-12 col-sm-8">
+            <div class="row align-items-center">
+                <div class="col-12 col-sm-6">
+                    <div id="memoriesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                        <div class="carousel-inner">
+                            <% memory.images.forEach((img, i)=> { %>
+                                <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                                    <img src="<%= img.url %> " class="d-block w-100" alt="...">
+                                </div>
+                                <% }) %>
+                        </div>
+                        <% if (memory.images.length> 1) { %>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#memoriesCarousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#memoriesCarousel"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            <% } %>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="card mb-3">
+
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= memory.title %>
+                            </h5>
+                            <h5 class="card-title">
+                                <%= memory.date %>
+                            </h5>
+                            <h5 class="card-title text-muted">
+                                <%= memory.location %>
+                            </h5>
+                            <h5 class="card-title">
+                                Post By <%= memory.author.username %>
+                            </h5>
+                            <p class="card-text">
+                                <%= memory.description %>
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-inline">
+                                <a href="/memories/<%=memory._id %>/edit" class="btn btn-success">Edit</a>
+                            </div>
+                            <% if (currentUser && memory.author.equals(currentUser._id)) {%>
+                                <form class="d-inline" action="/memories/<%= memory._id %>?_method=DELETE"
+                                    method="POST">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                                <% } %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-3">
+                            <img src="https://res.cloudinary.com/dvmlczwti/image/upload/v1635301600/Memory/ijqjbmhkhsckyqsjpa6d.jpg"
+                                class="img-fluid" id="randomPics" alt="">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-4">
+            <div id='map' class="mb-3" style='width: 100%; height: 300px;'></div>
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">
+                    <form action="/memories/<%= memory._id %>/thumbups" method="POST">
+                        <% if (memory.currentThumbup) { %>
+                            <button class="fa fa-thumbs-up"></button>
+                            <% }else { %>
+                                <button class="fa">&#xf087;</button>
+                                <% } %>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <% for (let activity of memory.activities) { %>
+                        <p class="card-text">
+                            <%= activity.actType %> by <%= activity.actAuthor.username %> on <%= activity.actDate %>
+                        </p>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const randomPics = document.getElementById('randomPics');
+        const randomIndex = Math.floor(Math.random() * 12);
+
+        switch (randomIndex) {
+            case 0:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332820/Memory/fmemgyxfpp33ttumgbrj.jpg";
+                break;
+            case 1:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332820/Memory/px7oesvml6wtpdh2ejhh.jpg";
+                break;
+            case 2:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/hnrozkn6u3oib2dfv5ac.jpg";
+                break;
+            case 3:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/tf0yf6f4mhadtznakw1l.jpg";
+                break;
+            case 4:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/k280wdk6yoxdaddqhqkp.jpg";
+                break;
+            case 5:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/sbauedpkreyq3gxwrpz7.jpg";
+                break;
+            case 6:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/ku1ypgywafqgy1vs4tky.jpg";
+                break;
+            case 7:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/qqsqqbfjgta1zudw12vy.jpg";
+                break;
+            case 8:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/sfjqwkg4n7j89sfibnmr.jpg";
+                break;
+            case 9:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/djdic2ta6dkqix9e0rlg.jpg";
+                break;
+            case 10:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/mqd7ofanv0atsakzi2yj.jpg";
+                break;
+            case 11:
+                randomPics.src = "https://res.cloudinary.com/dvmlczwti/image/upload/v1635332819/Memory/h3ilrvhvlg09c7w3smcw.jpg";
+        }
+        mapboxgl.accessToken = mapToken;
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/light-v10', // style URL
+            center: [<%= memory.geometry.coordinates %>], // starting position [lng, lat]
+            zoom: 10 // starting zoom
+        });
+
+        map.addControl(new mapboxgl.NavigationControl());
+
+
+        new mapboxgl.Marker()
+            .setLngLat([<%= memory.geometry.coordinates %>])
+            .setPopup(
+                new mapboxgl.Popup({ offset: 25 })
+                    .setHTML(
+                        '<h3><%= memory.title%></h3><p><%= memory.location %></p>'
+                    )
+            )
+            .addTo(map)
+    </script>
+
+    <!-- <script src="/public/javascripts/showMap.js"></script> -->

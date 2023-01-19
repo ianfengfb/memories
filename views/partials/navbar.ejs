@@ -1,0 +1,38 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class=" container-fluid">
+        <a class="navbar-brand" href="/">Memories</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/memories">Memories</a>
+                <a class="nav-link" href="/memories/new">New Memory</a>
+                <a class="btn btn-secondary" href="/memories/<%= browsing %>">Browsing</a>
+            </div>
+            <% if (currentUser) { %>
+                <div class="dropdown navbar-nav  ms-auto me-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Hello, <%= currentUser.username %>!
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                        <% if (currentUser.username==="Husband" ) { %>
+                            <img class="dropdown-item mx-auto" style="width: 50%;"
+                                src="https://res.cloudinary.com/dvmlczwti/image/upload/v1639545897/Memory/iftomy90wnfhiamdmxgu.png"
+                                alt="">
+                            <% } else { %>
+                                <img class="dropdown-item mx-auto" style="width: 50%;"
+                                    src="https://res.cloudinary.com/dvmlczwti/image/upload/v1639545897/Memory/d7ptekloewetpokaoo88.png"
+                                    alt="">
+                                <% } %>
+                                    <li class="dropdown-item">Memories Contributed: <%= userContribution %>
+                                    </li>
+                    </ul>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</nav>

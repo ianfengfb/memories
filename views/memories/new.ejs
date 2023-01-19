@@ -1,0 +1,32 @@
+<% layout('layouts/boilerplateShow') %>
+    <div class="row mx-3">
+        <div class="col-6 offset-3">
+            <form action="/memories" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date(YYYY-MM-DD):</label>
+                    <input type="date" class="form-control" id="date" placeholder="Enter a date yyyy-mm-dd"
+                        name="memory[date]" pattern="\d{4}-\d{2}-\d{2}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" class="form-control" id="title" placeholder="Enter a title" name="memory[title]"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location[City, State(or Province)]:</label>
+                    <input type="text" class="form-control" id="location" placeholder="City, State(or Province)"
+                        name="memory[location]" pattern="[a-zA-Z ]{1,15},[a-zA-Z ]{1,15}" required>
+                </div>
+                <div class="mb-3 custom-file">
+                    <label for="image" class="form-label custom-file-label">Upload Images:</label>
+                    <input type="file" class="form-control" id="image" name="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea class="form-control" name="memory[description]" id="description" cols="30" rows="5"
+                        required></textarea>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* @import url('//fonts.googleapis.com/css?family=Indie+Flower'); */
+        /* @import url('//fonts.googleapis.com/css?family=Amatic+SC'); */
+
+
+        body {
+            font-family: 'Indie Flower', cursive !important;
+            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+                url('https://res.cloudinary.com/dvmlczwti/image/upload/v1639369200/Memory/adjgujcxazsyokjkroo9.png');
+            background-color: white;
+            width: 100vw;
+            height: 100vh;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            /* text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5); */
+        }
+
+
+        :root {
+            --shadow-color: black;
+            --shadow-color-light: white;
+        }
+
+        #logo-1 {
+            cursor: pointer;
+            position: absolute;
+            margin-top: 40px;
+            margin-left: 180px;
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-family: "Archivo Black", "Archivo", sans-serif;
+            font-weight: normal;
+            height: auto;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 400px) {
+            #logo-1 {
+                font-size: 1rem;
+                margin-left: 20px;
+            }
+        }
+
+        .logo-1 {
+            color: white;
+            animation: neon 2s infinite;
+        }
+
+        @keyframes neon {
+            0% {
+                text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+                    0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+                    0 0 20px var(--shadow-color), 0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 150px var(--shadow-color);
+            }
+
+            50% {
+                text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+                    0 0 5px var(--shadow-color-light), 0 0 15px var(--shadow-color-light), 0 0 25px var(--shadow-color-light),
+                    0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 60px var(--shadow-color), 0 0 90px var(--shadow-color), 0 0 170px var(--shadow-color);
+            }
+
+            100% {
+                text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+                    0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+                    0 0 20px var(--shadow-color), 0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 150px var(--shadow-color);
+            }
+        }
+
+        .con {
+            width: 100%;
+            height: 100%;
+        }
+
+        ::selection {
+            background: transparent;
+        }
+
+        h4 {
+            font-size: 35px;
+            line-height: 1px;
+            font-family: 'Amatic SC', cursive !important;
+        }
+
+        .color1 {
+            color: #1BBC9B
+        }
+
+        /*MOUNTAIN MEADOW*/
+        .color2 {
+            color: #C0392B
+                /*TALL POPPY*/
+        }
+
+        .margin {
+            margin-bottom: 2rem;
+        }
+
+        .cardBood1 {
+            color: #013243;
+            /*SHERPA BLUE*/
+            position: absolute;
+            top: 59.5%;
+            left: 40%;
+            z-index: 1;
+            width: 300px;
+            height: 400px;
+            background: #e0e1dc;
+            transform-style: preserve-3d;
+            transform: scale(0.17, 0.17) translate(-50%, -50%) perspective(2000px) rotate(10deg) skew(-20deg);
+            box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 20px 0 60px rgba(0, 0, 0, .5);
+            transition: 1s;
+        }
+
+        .noHover1:hover {
+            transform: scale(0.20, 0.20) translate(-50%, -50%) perspective(2000px) rotate(10deg) skew(-20deg);
+        }
+
+
+        .cardBood1Move {
+            transform: translate(10%, -10%) perspective(2000px) rotate(15deg) scale(0.8);
+            box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5), 0 10px 100px rgba(0, 0, 0, .5);
+        }
+
+        .cardBood1:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #BAC1BA;
+            transform-origin: bottom;
+            transform: skewX(-45deg);
+        }
+
+        .cardBood1:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 5px;
+            height: 100%;
+            background: #92A29C;
+            transform-origin: left;
+            transform: skewY(-45deg);
+        }
+
+        .cardBood1 .imgBox {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-origin: left;
+            transition: .7s;
+        }
+
+        .cardBood1 .bark {
+            position: absolute;
+            background: #e0e1dc;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: .7s;
+        }
+
+        .cardBood1 .imgBox img {
+            min-width: 250px;
+            max-height: 400px;
+        }
+
+        .cardBood1Move .imgBox {
+            transform: rotateY(-135deg);
+        }
+
+        .cardBood1Move .bark {
+            opacity: 1;
+            transition: .6s;
+            box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+        }
+
+        .cardBood1 .details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            padding: 0 0 0 10px;
+            z-index: -1;
+            margin-top: 70px;
+        }
+
+        .cardBood1 .details p {
+            font-size: 20px;
+            line-height: 5px;
+            transform: rotate(-10deg);
+            padding: 0 0 0 20px;
+        }
+
+        .cardBood1 .details h4 {
+            text-align: center;
+        }
+
+        .cardBood2 {
+            color: #013243;
+            /*SHERPA BLUE*/
+            position: absolute;
+            top: 38.5%;
+            left: 57%;
+            width: 300px;
+            height: 400px;
+            background: #e0e1dc;
+            transform-style: preserve-3d;
+            transform: scale(0.2, 0.2) translate(-50%, -50%) perspective(2000px) rotate(10deg);
+            box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 20px 0 60px rgba(0, 0, 0, .5);
+            transition: 1s;
+        }
+
+        .noHover2:hover {
+            transform: scale(0.25, 0.25) translate(-50%, -50%) perspective(2000px) rotate(10deg);
+        }
+
+        .cardBood2Move {
+            transform: translate(-20%, -50%) perspective(2000px) rotate(15deg) scale(0.8);
+            box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5), 0 10px 100px rgba(0, 0, 0, .5);
+        }
+
+        .cardBood2:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #BAC1BA;
+            transform-origin: bottom;
+            transform: skewX(-45deg);
+        }
+
+        .cardBood2:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 5px;
+            height: 100%;
+            background: #92A29C;
+            transform-origin: left;
+            transform: skewY(-45deg);
+        }
+
+        .cardBood2 .imgBox {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-origin: left;
+            transition: .7s;
+        }
+
+        .cardBood2 .bark {
+            position: absolute;
+            background: #e0e1dc;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: .7s;
+        }
+
+        .cardBood2 .imgBox img {
+            min-width: 250px;
+            max-height: 400px;
+        }
+
+        .cardBood2Move .imgBox {
+            transform: rotateY(-135deg);
+        }
+
+        .cardBood2Move .bark {
+            opacity: 1;
+            transition: .6s;
+            box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+        }
+
+        .cardBood2 .details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            padding: 0 0 0 10px;
+            z-index: -1;
+            margin-top: 70px;
+        }
+
+        .cardBood2 .details p {
+            font-size: 20px;
+            line-height: 5px;
+            transform: rotate(-10deg);
+            padding: 0 0 0 20px;
+        }
+
+        .cardBood2 .details h4 {
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .cardBood1 {
+                left: 15%;
+            }
+
+            .cardBood2 {
+                left: 30%;
+            }
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .test {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            border: olive;
+            transform: rotate(45deg);
+            transition: 1s;
+        }
+
+        .testMove {
+            top: 75%;
+        }
+
+        /* #load {
+            position: absolute;
+            width: 600px;
+            height: 100px;
+            left: 50%;
+            top: 40%;
+            margin-left: -300px;
+            overflow: visible;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: default;
+            font-size: 20px;
+        }
+
+        #load div {
+            position: absolute;
+            width: 40px;
+            height: 72px;
+            opacity: 0;
+            font-family: Helvetica, Arial, sans-serif;
+            animation: move 4s linear infinite;
+            -o-animation: move 4s linear infinite;
+            -moz-animation: move 4s linear infinite;
+            -webkit-animation: move 4s linear infinite;
+            transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            color: black;
+        }
+
+        #load div:nth-child(2) {
+            animation-delay: 0.2s;
+            -o-animation-delay: 0.2s;
+            -moz-animation-delay: 0.2s;
+            -webkit-animation-delay: 0.2s;
+        }
+
+        #load div:nth-child(3) {
+            animation-delay: 0.4s;
+            -o-animation-delay: 0.4s;
+            -webkit-animation-delay: 0.4s;
+            -webkit-animation-delay: 0.4s;
+        }
+
+        #load div:nth-child(4) {
+            animation-delay: 0.6s;
+            -o-animation-delay: 0.6s;
+            -moz-animation-delay: 0.6s;
+            -webkit-animation-delay: 0.6s;
+        }
+
+        #load div:nth-child(5) {
+            animation-delay: 0.8s;
+            -o-animation-delay: 0.8s;
+            -moz-animation-delay: 0.8s;
+            -webkit-animation-delay: 0.8s;
+        }
+
+        #load div:nth-child(6) {
+            animation-delay: 1s;
+            -o-animation-delay: 1s;
+            -moz-animation-delay: 1s;
+            -webkit-animation-delay: 1s;
+        }
+
+        #load div:nth-child(7) {
+            animation-delay: 1.2s;
+            -o-animation-delay: 1.2s;
+            -moz-animation-delay: 1.2s;
+            -webkit-animation-delay: 1.2s;
+        }
+
+        #load div:nth-child(8) {
+            animation-delay: 1.4s;
+            -o-animation-delay: 1.4s;
+            -moz-animation-delay: 1.4s;
+            -webkit-animation-delay: 1.4s;
+        }
+
+        #load div:nth-child(9) {
+            animation-delay: 1.6s;
+            -o-animation-delay: 1.6s;
+            -moz-animation-delay: 1.6s;
+            -webkit-animation-delay: 1.6s;
+        }
+
+        #load div:nth-child(10) {
+            animation-delay: 1.8s;
+            -o-animation-delay: 1.8s;
+            -moz-animation-delay: 1.8s;
+            -webkit-animation-delay: 1.8s;
+        }
+
+        #load div:nth-child(11) {
+            animation-delay: 2.0s;
+            -o-animation-delay: 2.0s;
+            -moz-animation-delay: 2.0s;
+            -webkit-animation-delay: 2.0s;
+        }
+
+        #load div:nth-child(12) {
+            animation-delay: 2.2s;
+            -o-animation-delay: 2.2s;
+            -moz-animation-delay: 2.2s;
+            -webkit-animation-delay: 2.2s;
+        }
+
+        #load div:nth-child(13) {
+            animation-delay: 2.4s;
+            -o-animation-delay: 2.4s;
+            -moz-animation-delay: 2.4s;
+            -webkit-animation-delay: 2.4s;
+        }
+
+        #load div:nth-child(14) {
+            animation-delay: 2.6s;
+            -o-animation-delay: 2.6s;
+            -moz-animation-delay: 2.6s;
+            -webkit-animation-delay: 2.6s;
+        }
+
+        #load div:nth-child(15) {
+            animation-delay: 2.8s;
+            -o-animation-delay: 2.8s;
+            -moz-animation-delay: 2.8s;
+            -webkit-animation-delay: 2.8s;
+        }
+
+        #load div:nth-child(16) {
+            animation-delay: 3.0s;
+            -o-animation-delay: 3.0s;
+            -moz-animation-delay: 3.0s;
+            -webkit-animation-delay: 3.0s;
+        }
+
+        @keyframes move {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            35% {
+                left: 41%;
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            65% {
+                left: 59%;
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                -moz-transform: rotate(-180deg);
+                -webkit-transform: rotate(-180deg);
+                -o-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+        }
+
+        @-moz-keyframes move {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            35% {
+                left: 41%;
+                -moz-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            65% {
+                left: 59%;
+                -moz-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                -moz-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes move {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            35% {
+                left: 41%;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            65% {
+                left: 59%;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                -webkit-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+        }
+
+        @-o-keyframes move {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            35% {
+                left: 41%;
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            65% {
+                left: 59%;
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                -o-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <div id="load">
+        <div> </div>
+        <div>Y</div>
+        <div>R</div>
+        <div>R</div>
+        <div>E</div>
+        <div>M</div>
+        <div> </div>
+        <div>S</div>
+        <div>A</div>
+        <div>M</div>
+        <div>T</div>
+        <div>S</div>
+        <div>I</div>
+        <div>R</div>
+        <div>H</div>
+        <div>C</div>
+    </div> -->
+    <div id="myDiv">
+        <header class="mb-auto">
+            <p id="logo-1" class="logo-1">
+                Memories
+            </p>
+        </header>
+        <div class="con">
+            <div class="cardBood1 noHover1" id="cardBood1" onclick="addClass1();removeClass2();">
+                <div class="imgBox">
+                    <div class="bark"></div>
+                    <img class="image-fluid"
+                        src="https://res.cloudinary.com/dvmlczwti/image/upload/v1639545897/Memory/iftomy90wnfhiamdmxgu.png">
+                </div>
+                <div class="details">
+                    <h4 class="color1">Memories</h2>
+                        <h4 class="color2 margin">Memories</h3>
+                            <p>Life</p>
+                            <p>is made up with</p>
+                            <p>the moment at present,</p>
+                            <p>and</p>
+                            <p>hundreds of thousands</p>
+                            <p>moments in the</p>
+                            <p>memories</p>
+                            <p class="text-right" style="margin-bottom: 2rem;">Husband</p>
+                            <form action="/login" method="post">
+                                <div class="input-group mb-3">
+                                    <input type="text" name="username" value="Husband" style="display: none;">
+                                    <input type="password" class="form-control" placeholder="Enter your password"
+                                        name="password" id="password1" required>
+                                    <button class="btn btn-success" style="font-size: 24px;"><i
+                                            class="fa fa-lock"></i></button>
+                                </div>
+                            </form>
+                </div>
+            </div>
+
+
+            <div class="cardBood2 noHover2" id="cardBood2" onclick="addClass2();removeClass1()">
+                <div class="imgBox">
+                    <div class="bark"></div>
+                    <img
+                        src="https://res.cloudinary.com/dvmlczwti/image/upload/v1639545897/Memory/d7ptekloewetpokaoo88.png">
+                </div>
+                <div class="details">
+                    <h4 class="color1">Memories</h4>
+                    <h4 class="color2 margin">Memories</h4>
+                    <p>Memory is past</p>
+                    <p>Memory is yesterday</p>
+                    <p>Memory is something</p>
+                    <p>you can fake it</p>
+                    <p>you can make it</p>
+                    <p>but you can never lose it</p>
+                    <p>Good </p>
+                    <p>Bad</p>
+                    <p class="text-right">There it is</p>
+                    <p class="text-right">♥Wife</p>
+                    <form action="/login" method="post">
+                        <div class="input-group mb-3">
+                            <input type="text" name="username" value="WifeZhang" style="display: none;">
+                            <input type="password" class="form-control" placeholder="Enter your password"
+                                name="password" id="password2" required>
+                            <button class="btn btn-success" style="font-size: 24px;"><i class="fa fa-lock"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script>
+
+        // function myFunction() {
+        //     myVar = setTimeout(showPage, 4500);
+        // }
+
+        // function showPage() {
+        //     document.body.style.backgroundImage = "url('https://res.cloudinary.com/dvmlczwti/image/upload/v1639369200/Memory/adjgujcxazsyokjkroo9.png')";
+        //     document.getElementById("load").style.display = "none";
+        //     document.getElementById("myDiv").style.display = "block";
+        // }
+        function openFormIan() {
+            document.getElementById("myFormIan").style.display = "block";
+            document.getElementById("myFormCharz").style.display = "none";
+        }
+
+        function openFormCharz() {
+            document.getElementById("myFormCharz").style.display = "block";
+            document.getElementById("myFormIan").style.display = "none";
+        }
+
+        function addClass1() {
+            const element = document.getElementById("cardBood1");
+            element.classList.add("cardBood1Move");
+            element.classList.remove("noHover1");
+            document.getElementById("password1").focus();
+        }
+        function removeClass1() {
+            const element = document.getElementById("cardBood1");
+            element.classList.remove("cardBood1Move");
+            element.classList.add("noHover1");
+        }
+        function addClass2() {
+            const element = document.getElementById("cardBood2");
+            element.classList.add("cardBood2Move");
+            element.classList.remove("noHover2");
+            document.getElementById("password2").focus();
+        }
+        function removeClass2() {
+            const element = document.getElementById("cardBood2");
+            element.classList.remove("cardBood2Move");
+            element.classList.add("noHover2");
+        }
+    </script>
+</body>
+
+</html>

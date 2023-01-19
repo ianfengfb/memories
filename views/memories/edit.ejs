@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplateShow') %>
+    <div class="row mx-3">
+        <div class="col-6 offset-3">
+            <form action="/memories/<%= memory._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Date:</label>
+                    <input type="text" class="form-control" id="date" placeholder="Enter a date dd/mm/yyyy"
+                        name="memory[date]" value="<%= memory.date %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" class="form-control" id="title" placeholder="Enter a title" name="memory[title]"
+                        value="<%= memory.title %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location:</label>
+                    <input type="text" class="form-control" id="location" placeholder="Enter a location"
+                        name="memory[location]" value="<%= memory.location %>" required>
+                </div>
+                <div class="mb-3 custom-file">
+                    <label for="image" class="form-label custom-file-label">Upload Images:</label>
+                    <input type="file" class="form-control" id="image" name="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea class="form-control" name="memory[description]" id="description" cols="30"
+                        rows="5"><%= memory.description %></textarea>
+                </div>
+                <div class="mb-3">
+                    <% memory.images.forEach(function(img, i) { %>
+                        <img src="<%= img.thumbnail %>" alt="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" id="img-<%= i %>" name="deleteImages[]" value="<%= img.fileName %>">
+                        </div>
+                        <label for="img-<%= i %>">Delete?</label>
+                        <% }) %>
+                </div>
+                <button class="btn btn-primary">Update</button>
+            </form>
+            <a href="/memories/<%= memory._id %>">Cancel</a>
+        </div>
+    </div>
